@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Picture Game</title>
+</head>
+<body>
+    <div class="card text-center rounded-circle border bg-primary" style="width: 15rem;">
+        <div class="card-body">
+          <h5 class="card-title">Picture Game</h5>
+        </div>
+      </div>
+
+      <br>
+      <div class="container.fluid">
+      <div class="row">
+      <div class="col-sm-4">  
+      <div class="card bg-warning" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">Instructions</h5>
+                <div class="card-text"> 
+                  <p>You will be given a random number at the start of the game.</p>
+                  <p>There are four pictures to the right. By clicking on a picture you will add a specific amount of points to your total score.</p>
+                  <p>You win the game by matching your total score to the random number, you lose the game if your total score goes above the random number.</p>
+                  <p>The value of eah picture is hidden from you until you click on it.</p>
+                  <p>Each time when the game starts, the game will change the values of each Picture.</p>
+              </div>
+
+            </div>      
+            </div>
+          </div>
+    <div class = "col-sm-4">
+
+
+        <div id = "picture"></div>
+        
+            <!-- <div class = "row">        
+             <!-- <img id = "btn1" class = "btn picture" src="assets/images/Rubix.jpg" alt="">    -->
+             <!-- </div>      -->
+             <!-- <br>        -->
+            <!-- <div class = "row"> -->
+                    <!-- <img id = "btn1" class = "btn picture" src="assets/images/puzzle.jpeg" alt=""> -->
+            <!-- </div> -->
+            <!-- <br> -->
+            <!-- <div class = "row"> -->
+                    <!-- <img id = "btn1" class = "btn picture" src="assets/images/darts.jpeg" alt=""> -->
+            <!-- </div> -->
+            <!-- <br> -->
+            <!-- <div class = "row"> -->
+                    <!-- <img id = "btn1" class = "btn picture" src="assets/images/ducky.jpeg" alt=""> -->
+            <!-- </div> -->
+    </div>
+    
+    <div class = "col-sm-4">
+        <div class = "row">
+            <div class="card bg-warning" style="width: 18rem; height: 10em;">
+                <div  class="card-body" id = "genNumber">Random Number</div>
+            </div>
+        </div>
+        <br>
+        <div class = "row">     
+            <div class="card bg-warning" style="width: 18rem; height: 10em;">
+                <div class="card-body">Win Lose Box</div>
+            </div>
+        </div>  
+        <br>  
+        <div class = "row">     
+                <div class="card bg-warning" style="width: 18rem; height: 10em;">
+                    <div class="card-body" id = "score" >Your Score</div>
+                </div>
+            </div>         
+    </div>
+    </div>
+    </div>
+
+<script>
+$(document).ready(function(){
+
+//These are our chosen functions for the game//
+    var win;
+    var loss;
+    var userScore;
+    var genNumber = " ";
+    var genbtn = " ";
+    var picChosen;
+    var images = [
+    "assets/images/Rubix.jpg",
+    "assets/images/puzzle.jpeg",
+    "assets/images/darts.jpeg",
+    "assets/images/ducky.jpeg"
+    ]
+    
+//next on the document when the document loads I need the generated number to be created then stored.
+
+//This is were the generated number is from btw 19 -  120
+var random = Math.floor(Math.random() * 101) + 19
+
+
+//This is were we will put the generated number  and the var equal to a string so we can call genNumber back into the string to place it
+genNumber = random + genNumber;
+console.log(genNumber);
+
+//this is function will not add the value that has been stored in genNumber and add to the div on the html behind the random number words in that div.
+$("#genNumber").append("<br><div>" + genNumber);
+
+
+//This loop will dynamically make 4 buttons, and assign them a random number.
+for (var i = 0; i < 4; i++){
+    var ranBtn = Math.floor(Math.random() * 11) + 1
+    console.log(ranBtn);
+ //This var is holding the div so i can call the div and add the random number to this div later   
+    var picture = $("<button>");
+ //This will add classes to the buttons, and also assign the random number and give it to the button   
+    picture.addClass("number-btn btn btn-outline-primary");
+    picture.attr("data-random", ranBtn);
+    // picture.attr();
+    
+     
+    $("#picture").append("<div><br>", picture);
+        
+}
+//This math is for the button so when the page is ready each and when the game resets after a win or lose the btns will have a different value
+picture.css({
+        "background-image":url("assets/images/ducky.jpeg")
+    });
+
+
+
+
+
+
+
+
+
+
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
