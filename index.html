@@ -66,13 +66,18 @@
         <br>
         <div class = "row">     
             <div class="card bg-warning" style="width: 18rem; height: 10em;">
-                <div class="card-body">Win Lose Box</div>
+                <div class="card-body">
+                    <div id = "win"> Wins</div>
+                    <div id = "lose"> Loses</div>
+                </div>
+                
             </div>
         </div>  
         <br>  
         <div class = "row">     
                 <div class="card bg-warning" style="width: 18rem; height: 10em;">
-                    <div class="card-body" id = "score" >Your Score</div>
+                    <div>Your Score</div>
+                    <div id = "score"></div>
                 </div>
             </div>         
     </div>
@@ -83,23 +88,17 @@
 $(document).ready(function(){
 
 //These are our chosen functions for the game//
-    var win;
-    var loss;
-    var userScore = 0;
+    var wins = " " ;
+    var loss = 0;
+    // var userScore = 0;
     var genNumber = " ";
     var genbtn = " ";
-    var picChosen;
-    var images = [
-    "assets/images/Rubix.jpg",
-    "assets/images/puzzle.jpeg",
-    "assets/images/darts.jpeg",
-    "assets/images/ducky.jpeg"
-    ]
+    var picChosen = 0;
     
 //next on the document when the document loads I need the generated number to be created then stored.
 
 //This is were the generated number is from btw 19 -  120
-var random = Math.floor(Math.random() * 101) + 19
+var random = Math.floor(Math.random() * 101) + 19;
 
 
 //This is were we will put the generated number  and the var equal to a string so we can call genNumber back into the string to place it
@@ -127,17 +126,33 @@ for (var i = 0; i < 4; i++){
 }
 //This will create an onclick event attacthed the button I created above
 $(".number").on("click", function() {
-    var playerScore =$("<div>");
-    console.log(playerScore)
-    var playerScore = 
+//    need to add parseIntin here
+    var userScore = parseInt($(this).attr("data-random"));
+    
+    
+    var num = picChosen += userScore ;
+    console.log(num);
+    $("#score").html(num);
+
+    function Win(){
+        win += 1;
+        alert("Winner Winner");
+        $("#win").append(wins);
+    }
+    if (num == genNumber){
+        Win();
+     }
+    // var playerScore =$("<div>");
+    // console.log(playerScore)
+    // var playerScore = 
    
     // $("#score").text(userScore);
 // created a new div so I could place the value into a new place   
     // 
 //this will add text and value I created above for each button
-    playerScore.text($(this).attr('data-random'));
+    //num.text($(this).attr('data-random'));
 //Then this will place text of each button in a new div right after the div I alrady have for the score.
-    $("#score").append(playerScore);
+    
 });
     
 
