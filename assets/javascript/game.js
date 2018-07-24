@@ -17,9 +17,11 @@ $(document).ready(function(){
         function Win(){
             wins += 1;
             alert("Winner Winner");
+            num = 0
             $("#win").html(wins + " <br>");
             $("#genNumber").empty();
             $("#picture").empty();
+            $("#score").empty();
             startReset();
             clickButton();
         }
@@ -28,9 +30,11 @@ $(document).ready(function(){
         function Lose(){
             loss += 1
             alert("Too Bad");
+            num = 0;
             $("#lose").html(loss);
             $("#genNumber").empty();
             $("#picture").empty();  
+            $("#score").empty();
             startReset();
             clickButton();
         }
@@ -45,7 +49,7 @@ $(document).ready(function(){
      console.log(genRandom);
     
     //this is function will add the value that has been stored in genNumber and add to the div on the html behind the random number words in that div.
-    $("#genNumber").html("<br><div>" + genRandom);
+    $("#genNumber").append("<br><div>" + genRandom);
     
     
     //This loop will dynamically make 4 buttons, and assign them a random number.
@@ -54,13 +58,14 @@ $(document).ready(function(){
         console.log(ranBtn);
      //This var is holding the div so i can call the div and add the random number to this div later   
         var picture = $("<button>");
+        
      //This will add classes to the buttons, and also assign the random number and give it to the button   
         picture.addClass("btn btn-outline-primary number");
         picture.attr("data-random", ranBtn);
         
          
         $("#picture").append("<div><br>", picture);
-          console.log($("#picture"));
+          
         }
     
     }
@@ -82,6 +87,7 @@ $(document).ready(function(){
             // console.log(num);
             // console.log(genRandom);
             Lose();
+            
          }
     
         else if (num === genRandom){
