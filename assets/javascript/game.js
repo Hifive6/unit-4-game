@@ -18,9 +18,10 @@ $(document).ready(function(){
             wins += 1;
             alert("Winner Winner");
             $("#win").html(wins + " <br>");
+            $("#genNumber").empty();
             $("#picture").empty();
-            num = 0;
             startReset();
+            clickButton();
         }
 
     //this function is calling back later and used for the rules of losing
@@ -28,9 +29,10 @@ $(document).ready(function(){
             loss += 1
             alert("Too Bad");
             $("#lose").html(loss);
-            $("#picture").empty();
-            num = 0;
+            $("#genNumber").empty();
+            $("#picture").empty();  
             startReset();
+            clickButton();
         }
     //next on the document when the document loads I need the generated number to be created then stored.
     function startReset(){
@@ -56,8 +58,7 @@ $(document).ready(function(){
         picture.addClass("btn btn-outline-primary number");
         picture.attr("data-random", ranBtn);
         
-        // $("#picture").empty();
-    //     
+         
         $("#picture").append("<div><br>", picture);
           console.log($("#picture"));
         }
@@ -65,6 +66,7 @@ $(document).ready(function(){
     }
     startReset();
     
+    function clickButton(){
     //This will create an onclick event attacthed the button I created above
     $(".number").on("click",function() {
     //    need to add parseIntin here
@@ -85,11 +87,12 @@ $(document).ready(function(){
         else if (num === genRandom){
             Win();
         }
-    
-        
-    
-        
     });
+}
+    clickButton();
+    
+        
+    })
         
     
     
@@ -102,4 +105,4 @@ $(document).ready(function(){
     
     
         
-     })
+     
