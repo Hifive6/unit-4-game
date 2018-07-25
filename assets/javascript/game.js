@@ -1,5 +1,4 @@
-//How do I reset my game? I have tried may ways and I dont know how to do it.
-//Ask so I can finish.
+
 
 
 
@@ -38,6 +37,7 @@ $(document).ready(function(){
             startReset();
             clickButton();
         }
+
     //next on the document when the document loads I need the generated number to be created then stored.
     function startReset(){
     
@@ -48,26 +48,28 @@ $(document).ready(function(){
     
      console.log(genRandom);
     
-    //this is function will add the value that has been stored in genNumber and add to the div on the html behind the random number words in that div.
+    //this will add the value that has been stored in genNumber and add to the div on the html behind the random number words in that div.
     $("#genNumber").append("<br><div>" + genRandom);
     
     
     //This loop will dynamically make 4 buttons, and assign them a random number.
     for (var i = 0; i < 4; i++){
         var ranBtn = Math.floor(Math.random() * 11) + 1
-        console.log(ranBtn);
      //This var is holding the div so i can call the div and add the random number to this div later   
         var picture = $("<button>");
         
      //This will add classes to the buttons, and also assign the random number and give it to the button   
         picture.addClass("btn btn-outline-primary number");
+    //This will add an attribute of data to the button that is a picture, and assign the random number generated    
         picture.attr("data-random", ranBtn);
         
-         
+    //This will grab the id picture from the html and add the value from picture.     
         $("#picture").append("<div><br>", picture);
           
         }
     
+    
+    //This function begins the game when you click on the the duck buttons, I also made it a function to make it easier to recall it later in the function for win/lose
     }
     startReset();
     
@@ -79,13 +81,11 @@ $(document).ready(function(){
         
         
         num = num + userScore;
-        console.log(num);
         $("#score").html(num);
     
         //this is my if else statement for deciding how the game will decide wins and losess
         if (num > genRandom){
-            // console.log(num);
-            // console.log(genRandom);
+            
             Lose();
             
          }
