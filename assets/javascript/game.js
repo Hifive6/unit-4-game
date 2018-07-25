@@ -49,7 +49,7 @@ $(document).ready(function(){
      console.log(genRandom);
     
     //this will add the value that has been stored in genNumber and add to the div on the html behind the random number words in that div.
-    $("#genNumber").append("<br><div>" + genRandom);
+    $("#genNumber").append("<div>" + genRandom);
     
     
     //This loop will dynamically make 4 buttons, and assign them a random number.

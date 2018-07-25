@@ -7,3 +7,7 @@ body {
     padding: 41px;
     background-image: url("../images/ducky.jpeg");
 }
+
+#genNumber, #score{
+    font-size: 30px;
+}
