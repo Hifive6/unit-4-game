@@ -31,7 +31,7 @@ $(document).ready(function(){
             alert("Too Bad");
             num = 0;
             $("#lose").html(loss);
-            $("#genNumber").empty();
+            $("#genNumber").empty();7
             $("#picture").empty();  
             $("#score").empty();
             startReset();
